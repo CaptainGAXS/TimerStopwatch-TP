@@ -64,7 +64,7 @@ class IdleTest {
 		assertSame(SetTimer.Instance(), context.currentState.right());
 	}
 
-	@Disabled
+	@Disabled // nor implemented yet
 	void testLeft() {
 		/* we cannot test the effect of the left() event here,
 		 * since it is defined in the superclass of the IdleTimer state.

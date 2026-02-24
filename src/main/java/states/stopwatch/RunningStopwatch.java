@@ -5,7 +5,7 @@ import states.ClockState;
 public class RunningStopwatch extends ActiveStopwatch {
  
 	// use Singleton design pattern
-	private RunningStopwatch() {}; // make constructor invisible to clients
+	private RunningStopwatch() {} // make constructor invisible to clients
     private static RunningStopwatch instance = null;
     public static RunningStopwatch Instance() {
         if(instance == null) instance = new RunningStopwatch();                
@@ -16,12 +16,14 @@ public class RunningStopwatch extends ActiveStopwatch {
     public ClockState up() {
         return transition(LaptimeStopwatch.Instance());
     }
+    @Override
     public String getUpText() { return "split"; }
     
     @Override
     public ClockState right() {
         return transition(ResetStopwatch.Instance());
     }
+    @Override
     public String getRightText() {return "reset"; }
     
     @Override

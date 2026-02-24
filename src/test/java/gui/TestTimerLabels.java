@@ -11,7 +11,7 @@ import states.timer.*;
 @DisplayName("Timer GUI Labels Tests")
 class TestTimerLabels extends TestGUIAbstract {
 
-	private static final Logger logger = LogManager.getLogger(ClockState.class);
+	private static final Logger logger = LogManager.getLogger(TestTimerLabels.class);
 
 	void assertTimerLabels(AbstractTimer state) {
 		c.currentState = state;
@@ -42,7 +42,7 @@ class TestTimerLabels extends TestGUIAbstract {
 		assertEquals("IdleTimer",g.myText3.getText());
 		assertEquals("timer",g.myText2.getText());
 		assertEquals("memTimer = 0",g.myText1.getText());
-	};
+	}
 
 	@Test
 	@DisplayName("Test SetTimer Button Labels")
