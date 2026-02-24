@@ -16,10 +16,12 @@ public abstract class AbstractTimer extends ClockState {
 	// need to be shared between all Timer substates.
 	protected static int timer;
 	protected static int memTimer;
+	protected static boolean isRinging = false;
 
     // these getters are needed for testing purposes
 	public static int getTimer() {return timer;}
 	public static int getMemTimer() {return memTimer;}
+	public static boolean isRinging() {return isRinging;}
 
 	public static void resetInitialValues() {
     	timer = 0;
