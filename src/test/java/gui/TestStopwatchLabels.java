@@ -3,9 +3,11 @@ package gui;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Stopwatch GUI Labels Tests")
 class TestStopwatchLabels extends TestGUIAbstract {
 
     @Test
+	@DisplayName("Test Stopwatch Reset State Labels")
 	void testStopwatch1() {
     	c.left(); //simulate clicking on the left button
     	g.updateUI(c); //apply the effect on the user interface
@@ -18,6 +20,7 @@ class TestStopwatchLabels extends TestGUIAbstract {
     }
 
     @Test
+	@DisplayName("Test Stopwatch Running State Labels")
 	void testStopwatch2() {
     	c.left(); //simulate clicking on the left button
     	c.up(); //simulate clicking on the right button

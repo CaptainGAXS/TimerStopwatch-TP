@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import states.stopwatch.*;
 import states.timer.*;
 
+@DisplayName("Integration Scenarios")
 class TestScenarios {
 
 	Context c;
@@ -20,6 +21,7 @@ class TestScenarios {
     
   //This is more a kind of integration test than a real unit test	
   @Test
+  @DisplayName("Complete Integration Scenario")
   void completeScenario() {
 	  assertEquals(IdleTimer.Instance(),c.currentState);
 	  assertEquals(0,AbstractTimer.getMemTimer());

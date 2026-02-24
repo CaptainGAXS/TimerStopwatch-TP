@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import states.ClockState;
 import states.timer.*;
 
+@DisplayName("Timer GUI Labels Tests")
 class TestTimerLabels extends TestGUIAbstract {
 
 	private static final Logger logger = LogManager.getLogger(ClockState.class);
@@ -22,6 +23,7 @@ class TestTimerLabels extends TestGUIAbstract {
 		assertEquals(g.b3.getText(),c.getRightText(),"button 3 for state " + stateName);
 	}
 	@Test
+	@DisplayName("Test Labels for all Timer States")
 	void testIdleTimerLabels() {
 		assertTimerLabels(IdleTimer.Instance());
 		assertTimerLabels(PausedTimer.Instance());
@@ -31,6 +33,7 @@ class TestTimerLabels extends TestGUIAbstract {
 	}
 
    @Test
+   @DisplayName("Test Initial Timer Button Labels")
    void testTimerButtonLabels1() {
 		g.updateUI(c);
 		assertEquals("change mode",g.b1.getText());
@@ -42,6 +45,7 @@ class TestTimerLabels extends TestGUIAbstract {
 	};
 
 	@Test
+	@DisplayName("Test SetTimer Button Labels")
 	void testTimerButtonLabels2() {
 		c.right(); //simulate clicking on the left button
 		g.updateUI(c); //apply the effect on the user interface
@@ -54,6 +58,7 @@ class TestTimerLabels extends TestGUIAbstract {
 	}
 
 	@Test
+	@DisplayName("Test Stopwatch Mode Initial Labels")
 	void testStopwatchButtonLabels1() {
 		c.left(); //simulate clicking on the left button
 		g.updateUI(c); //apply the effect on the user interface
@@ -63,6 +68,7 @@ class TestTimerLabels extends TestGUIAbstract {
 	}
 
 	@Test
+	@DisplayName("Test Stopwatch Split/Reset Labels")
 	void testStopwatchButtonLabels2() {
 		c.left(); //simulate clicking on the left button
 		c.up(); //simulate clicking on the right button
