@@ -1,8 +1,12 @@
 import gui.SwingGUI;
 import states.Context;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ChronometerMain {
     
+    private static final Logger logger = LogManager.getLogger(ChronometerMain.class);
+
 	private SwingGUI g;
 	private Context c;
     private boolean running = true;
@@ -16,7 +20,9 @@ public class ChronometerMain {
  		  g.updateUI(c);
     	  while (running) {
     		try { Thread.sleep(frequency); }
-    		catch (InterruptedException e) { e.printStackTrace(); }
+    		catch (InterruptedException e) {
+                logger.error("Interrupted Exception in main loop", e);
+            }
  	        g.updateUI(c);
  	        c.tick();
   	      }
