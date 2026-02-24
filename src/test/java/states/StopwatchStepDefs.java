@@ -5,28 +5,29 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import states.stopwatch.AbstractStopwatch;
+import states.timer.AbstractTimer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StopwatchStepDefs {
 
-    private Context context;
-
     @Before
     public void setUp() {
         AbstractStopwatch.resetInitialValues();
+        AbstractTimer.resetInitialValues();
     }
 
     @Given("a new context in stopwatch mode")
     public void aNewContextInStopwatchMode() {
         AbstractStopwatch.resetInitialValues();
-        context = new Context();
+        Context context = new Context();
         context.currentState = AbstractStopwatch.Instance();
+        SharedContext.context = context;
     }
 
     @Then("the mode is {string}")
     public void theModeIs(String expected) {
-        assertEquals(expected, context.getModeText());
+        assertEquals(expected, SharedContext.context.getModeText());
     }
 
     @Then("the total time is {int}")
@@ -41,18 +42,41 @@ public class StopwatchStepDefs {
 
     @When("I start the stopwatch")
     public void iStartTheStopwatch() {
-        // up() from ResetStopwatch → RunningStopwatch
-        context.up();
+        // up() : ResetStopwatch → RunningStopwatch
+        SharedContext.context.up();
     }
 
     @When("I tick once")
     public void iTickOnce() {
-        context.tick();
+        SharedContext.context.tick();
+    }
+
+    @When("I tick {int} times")
+    public void iTickNTimes(int n) {
+        for (int i = 0; i < n; i++) SharedContext.context.tick();
     }
 
     @When("I press reset")
     public void iPressReset() {
-        // right() from RunningStopwatch → ResetStopwatch
-        context.right();
+        // right() : RunningStopwatch → ResetStopwatch
+        SharedContext.context.right();
+    }
+
+    @When("I press split")
+    public void iPressSplit() {
+        // up() : RunningStopwatch → LaptimeStopwatch
+        SharedContext.context.up();
+    }
+
+    @When("I press unsplit")
+    public void iPressUnsplit() {
+        // up() : LaptimeStopwatch → RunningStopwatch
+        SharedContext.context.up();
+    }
+
+    @When("I switch mode")
+    public void iSwitchMode() {
+        // left() : exits current composite state and enters history state of the other mode
+        SharedContext.context.left();
     }
 }
