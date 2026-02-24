@@ -16,8 +16,12 @@ import javax.swing.JLabel;
  */
 public class HeadlessGUI {
 
-    public JButton b1, b2, b3;
-    public JLabel myText1, myText2, myText3;
+    public JButton b1;
+    public JButton b2;
+    public JButton b3;
+    public JLabel myText1;
+    public JLabel myText2;
+    public JLabel myText3;
 
     protected EventListener observer;
 

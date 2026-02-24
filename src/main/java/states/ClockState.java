@@ -14,17 +14,15 @@ public abstract class ClockState {
     public String getUpText() { return "(unused)"; }
 
     public ClockState right() {return this; } // button 3 pressed (by default do nothing)
-    public String getRightText() { return "(unused)"; }; // text to display on button 3
+    public String getRightText() { return "(unused)"; } // text to display on button 3
         
     public abstract String getDisplayString(); // string to be displayed in GUI
     public abstract Mode getMode(); 
     
     // transition can only be used, but not overridden, by substates
-    protected final ClockState transition(ClockState nextState) {
+    protected final ClockState transition(ClockState target) {
     	exit(); // execute the exit action of the current state;
-    	ClockState target = nextState;
-    	target.entry(); // execute the entry action of the target state;
-    	//target.doIt(); // executing the recurring action in the target state once;
+        target.entry(); // execute the entry action of the target state;
         return target; // and return the target state
         // 
     }
@@ -32,11 +30,11 @@ public abstract class ClockState {
     // entry and exit and do actions can be redefined by, and are only visible to, substates
     protected void entry() {
         // the entry action of the state, which is empty (no action) by default
-        logger.debug("entering {}", this.getClass().getName()); };
+        logger.debug("entering {}", this.getClass().getName()); }
 
     protected void exit() {
     	// the exit action of the state, which is empty (no action) by default
-        logger.debug("exiting {}", this.getClass().getName()); };
+        logger.debug("exiting {}", this.getClass().getName()); }
 
     protected ClockState doIt() {
     	// specific behaviour to be implemented in each state.

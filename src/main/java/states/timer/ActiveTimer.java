@@ -20,6 +20,7 @@ public abstract class ActiveTimer extends AbstractTimer {
     public ClockState right() {
     	return transition(IdleTimer.Instance());
     }
+    @Override
     public String getRightText() { return "reset"; }
 
 }

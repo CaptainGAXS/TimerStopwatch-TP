@@ -5,8 +5,7 @@ import states.timer.AbstractTimer;
 
 public class Context implements EventListener {
 	
-    //private JLabel display;
-  	    
+    //private JLabel display
     public ClockState currentState;
      	
     public Context() {
@@ -31,7 +30,6 @@ public class Context implements EventListener {
     
     public String getStateText() {
     	return currentState.getClass().getSimpleName();
-    	// uses Java reflection mechanism; 
     }
     
     public String getModeText() { 

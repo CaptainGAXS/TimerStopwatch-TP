@@ -5,7 +5,7 @@ import states.ClockState;
 public class ResetStopwatch extends AbstractStopwatch {
 
 	// use Singleton design pattern
-    private ResetStopwatch() {};
+    private ResetStopwatch() {}
     private static ResetStopwatch instance = null;
     public static ResetStopwatch Instance() {
         if(instance == null) instance = new ResetStopwatch();
@@ -16,7 +16,8 @@ public class ResetStopwatch extends AbstractStopwatch {
     public ClockState up() {
     	return transition(ActiveStopwatch.Instance());
     	}
-	    
+
+	@Override
 	public String getUpText() { return "run"; }
 	    	    
 	@Override

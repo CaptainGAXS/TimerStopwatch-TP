@@ -14,12 +14,12 @@ public class ChronometerMain {
     // The method run() ensures that with a given frequency
     // the state machine's actions are executed with tick() and
     // the ui is updated accordingly with updateUIText().    
-	private void run(int frequency) {
+	private void run() {
         // infinite loop that asks the current state to do whatever it needs to do
         // and that updates the graphical user interface accordingly
  		  g.updateUI(c);
     	  while (running) {
-    		try { Thread.sleep(frequency); }
+    		try { Thread.sleep(100); }
     		catch (InterruptedException e) {
                 logger.error("Interrupted Exception in main loop", e);
             }
@@ -33,7 +33,7 @@ public class ChronometerMain {
         myChrono.c = new Context(); // create the state machine context
         myChrono.g = new SwingGUI(myChrono.c); // create the GUI and pass it the context
         
-        myChrono.run(100); // and start running with frequency of 100 millisecs
+        myChrono.run(); // and start running with frequency of 100 millisecs
         
     }
    

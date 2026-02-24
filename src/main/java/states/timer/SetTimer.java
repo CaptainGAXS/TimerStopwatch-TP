@@ -5,7 +5,7 @@ import states.ClockState;
 public class SetTimer extends AbstractTimer {
 
 	// use Singleton design pattern
-	private SetTimer() {}; // make constructor invisible to clients
+	private SetTimer() {} // make constructor invisible to clients
     private static SetTimer instance = null;
     static public SetTimer Instance() {
         if(instance == null) instance = new SetTimer();             
@@ -21,6 +21,7 @@ public class SetTimer extends AbstractTimer {
 	    memTimer = 0; // clicking on the button resets the memory to 0   
 	    return this; // do not switch to a different state
 	    }
+    @Override
     public String getLeftText() { return "reset"; }
 
 	@Override
@@ -28,12 +29,14 @@ public class SetTimer extends AbstractTimer {
 		memTimer = memTimer +5; // increase the memory with 5
 		return this; // do not switch to a different state
     }
+    @Override
     public String getUpText() { return "inc 5"; }
 	
 	@Override
 	public ClockState right() {
         return transition(IdleTimer.Instance());
     }
+    @Override
     public String getRightText() { return "done"; }
 	    
     @Override
