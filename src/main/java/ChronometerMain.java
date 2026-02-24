@@ -5,7 +5,8 @@ public class ChronometerMain {
     
 	private SwingGUI g;
 	private Context c;
-   	
+    private boolean running = true;
+
     // The method run() ensures that with a given frequency
     // the state machine's actions are executed with tick() and
     // the ui is updated accordingly with updateUIText().    
@@ -13,7 +14,7 @@ public class ChronometerMain {
         // infinite loop that asks the current state to do whatever it needs to do
         // and that updates the graphical user interface accordingly
  		  g.updateUI(c);
-    	  while (true) {
+    	  while (running) {
     		try { Thread.sleep(frequency); }
     		catch (InterruptedException e) { e.printStackTrace(); }
  	        g.updateUI(c);
